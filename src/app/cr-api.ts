@@ -1279,7 +1279,7 @@ const mapCards = (): { [key: string]: CardItem } => {
             return c;
         })
         .concat(cardEndpoint.items)
-        .sort((a, b) => a.name.localeCompare(b.name))
+        .sort((a, b) => a.elixirCost - b.elixirCost)
         .reduce((acc: { [key: string]: CardItem }, card: CardItem) => {
             acc[card.name] = card;
             return acc;
@@ -1289,5 +1289,3 @@ const mapCards = (): { [key: string]: CardItem } => {
 export const cardsInfo: { [key: string]: CardItem } = mapCards()
 
 export const allCards: string[] = Object.keys(cardsInfo)
-
-export const heroCards: string[] = cardEndpoint.items.filter((e: CardItem) => e.rarity === "champion").map((e: CardItem) => e.name)
