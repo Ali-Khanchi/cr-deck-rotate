@@ -68,7 +68,7 @@ export default function Home() {
         setStack((oldStack) => {
             const newStack = [...oldStack];
             const [clickedCard] = newStack.splice(index, 1);
-            const [replaceCard] = newStack.splice(-4, 1);
+            const [replaceCard] = newStack.splice((championAlive ? -3 : -4), 1);
             newStack.splice(index, 0, replaceCard);
             if (clickedCard.rarity === "champion") {
                 setChampionAlive(true);
@@ -202,7 +202,7 @@ export default function Home() {
             <div className="flex flex-col items-center space-y-8 w-1/2 h-full">
                 {/* Holding Cards */}
                 <div className="flex flex-row space-x-4 border-2 border-gray-200 p-2">
-                    {stack.slice(0, -4).map((card, index) => (
+                    {stack.slice(0, (championAlive ? -3 : -4)).map((card, index) => (
                         <div
                             key={index}
                             className="w-24 h-48 flex flex-col items-center justify-center cursor-pointer"
@@ -215,7 +215,7 @@ export default function Home() {
 
                 {/* Upcoming Cards */}
                 <div className="flex flex-row space-x-4 p-2">
-                    {stack.slice(-4).map((card, index) => {
+                    {stack.slice((championAlive ? -3 : -4)).map((card, index) => {
                         const upIn =
                             stack.length <= 4 ? index + (5 - stack.length) : index + 1;
                         return (
