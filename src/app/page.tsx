@@ -214,7 +214,7 @@ export default function Home() {
                 </div>
 
                 {/* Upcoming Cards */}
-                <div className="flex flex-row space-x-4 border-2 border-gray-200 p-2">
+                <div className="flex flex-row space-x-4 p-2">
                     {stack.slice(-4).map((card, index) => {
                         const upIn =
                             stack.length <= 4 ? index + (5 - stack.length) : index + 1;
